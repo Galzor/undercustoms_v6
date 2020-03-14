@@ -107,12 +107,10 @@ get_header();
 
   <section class="common-section services-section">
     <div class="container py-5">
-
       <div class="section-title text-center mb-5">
         <p>Our Services</p>
         <h2> Why choose <span>instaboost?</span></h2>
       </div>
-
       <div class="row">
 
         <div class="col-md-6 col-lg-6 mb-4">
@@ -248,12 +246,10 @@ get_header();
 
   <section class="common-section services-section bg-dark">
     <div class="container py-5">
-
       <div class="section-title text-center text-white mb-5">
         <p> Unparalled Expertise </p>
         <h2> Your digital marketing... <strong class="text-color">Done</strong></h2>
       </div>
-
       <div class="row">
 
         <div class="col-md-6 col-lg-3 mb-3">
@@ -529,6 +525,62 @@ get_header();
             </div>
           </div>
 
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="common-section gallery-section">
+    <div class="container pt-5">
+      <div class="row mb-4">
+        <div class="col-md-8">
+          <div class="section-title text-center text-md-left">
+            <p>Our Work </p>
+            <h2>See all the projects <span>we completed</span> </h2>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="text-center text-md-right pt-2 pt-md-4">
+            <a class="btn btn-primary" href="<?php echo site_url(); ?>/work/"> See Some Of Our Work </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container pb-5">
+
+      <div class="scroll-works">
+        <div class="row justify-content-center">
+          <?php
+          // TO SHOW THE PAGE CONTENTS
+          $active = 1;
+          $args = array(
+            'posts_per_page' => 3,
+            // 'post_type' => 'works',
+            'orderby' => 'date',
+            'order' => 'DESC'
+          );
+          query_posts($args);
+          while (have_posts()) : the_post();
+            ?>
+            <div class="col-md-4 mb-4">
+              <div class="scroll-box">
+                <div class="scroll-overlay">
+                  <div class="icon">
+                    <i class="fa fa-caret-up"></i><br> <i class="fa fa-mouse"></i><br> <i class="fa fa-caret-down"></i>
+                  </div>
+                  <h6>Scroll for more</h6>
+                </div>
+                <div class="scroll-image">
+                  <img src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>" alt="<?php the_title(); ?>">
+                </div>
+              </div>
+            </div>
+            <?php
+            $active++;
+          endwhile;
+          wp_reset_query();
+          ?>
         </div>
       </div>
 
